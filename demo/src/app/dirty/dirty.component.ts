@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, TemplateRef, ViewChild } from "@angular/core";
+import { ColDef } from "ag-grid-community";
 
 interface SomeTypeNotInAnotherFile {
     bla: string;
@@ -30,7 +31,7 @@ export class DirtyComponent {
         this.nestedMethod();
     }
 
-    @ViewChild("myContent", { static: true }) myContent: TemplateRef<any>;
+    @ViewChild("myContent", { static: true }) myContent!: TemplateRef<any>;
 
     title = "demo";
 
@@ -44,6 +45,14 @@ export class DirtyComponent {
         this.crypticVariable = this.http.get("http://my.url");
         this.anotherCryptic = `${this.crypticVariable}`;
     }
+
+    columnDefs: ColDef[] = [{ field: "make" }, { field: "model" }, { field: "price" }];
+
+    rowData = [
+        { make: "Toyota", model: "Celica", price: 35000 },
+        { make: "Ford", model: "Mondeo", price: 32000 },
+        { make: "Porsche", model: "Boxster", price: 72000 },
+    ];
 
     public method(unusedParam: any) {
         // Functionality that should be in a service, e.g. data fetching
