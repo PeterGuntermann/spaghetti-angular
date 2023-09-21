@@ -25,6 +25,7 @@ type TypeB = {
     templateUrl: "./dirty.component.html",
     styleUrls: ["./dirty.component.scss"],
 })
+// inheritance
 export class DirtyComponent {
     public methodBeforeProperties() {
         console.log("stuff");
@@ -46,6 +47,7 @@ export class DirtyComponent {
         this.anotherCryptic = `${this.crypticVariable}`;
     }
 
+    // lots of datagrid handling, e.g. AG-grid
     columnDefs: ColDef[] = [{ field: "make" }, { field: "model" }, { field: "price" }];
 
     rowData = [
@@ -60,7 +62,7 @@ export class DirtyComponent {
         this.methodBeforeProperties();
     }
 
-    // lots of datagrid handling, e.g. AG-grid
+    // Angular reactive forms stuff
 
     public nestedMethod() {
         this.nestedMethodWithCrypt();
